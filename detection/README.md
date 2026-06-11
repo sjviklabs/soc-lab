@@ -4,7 +4,7 @@ Detection rules, correlation logic, and alert tuning methodology for the SOC lab
 
 ## Philosophy
 
-Good detection is not about writing the most rules. It is about writing the *right* rules and keeping them honest.
+Good detection is not about writing the most rules. It is about writing the _right_ rules and keeping them honest.
 
 **Defense in depth for alerting** means no single detection layer is trusted alone. Network-level detections miss encrypted C2. Endpoint detections miss living-off-the-land if the binary is trusted. Log-based detections miss what is not logged. Layering these creates overlap where a miss at one layer is caught by another.
 
@@ -16,7 +16,7 @@ Good detection is not about writing the most rules. It is about writing the *rig
 
 Rules in this repo use the [Sigma](https://github.com/SigmaHQ/sigma) format because:
 
-- **Vendor-neutral:** Sigma rules describe *what* to detect, not *how* in a specific SIEM. They convert to Splunk SPL, Elastic KQL, Microsoft Sentinel, and others via the `sigma-cli` toolchain.
+- **Vendor-neutral:** Sigma rules describe _what_ to detect, not _how_ in a specific SIEM. They convert to Splunk SPL, Elastic KQL, Microsoft Sentinel, and others via the `sigma-cli` toolchain.
 - **Community standard:** The SigmaHQ repository contains thousands of peer-reviewed rules. Writing in the same format means contributing back is trivial and consuming community rules requires no translation.
 - **Version-controllable:** YAML files diff cleanly in Git, making rule changes auditable.
 - **Testable:** Sigma rules can be validated against log samples before deployment, reducing the "deploy and hope" cycle.

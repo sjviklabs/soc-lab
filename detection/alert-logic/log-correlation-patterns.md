@@ -15,6 +15,7 @@ The patterns below describe detection logic independent of any specific SIEM. Th
 **Chain:** Auth failure burst --> Successful login --> Access to new host
 
 **Logic:**
+
 ```
 STAGE 1: Brute force signal
   WHERE event_type = "authentication"
@@ -46,6 +47,7 @@ STAGE 3: Lateral movement (same account, different host)
 **Chain:** Email delivery --> User click --> Process execution --> Outbound C2
 
 **Logic:**
+
 ```
 STAGE 1: Suspicious email delivered
   WHERE event_source = "email_gateway"
@@ -84,6 +86,7 @@ STAGE 4: Outbound connection to uncategorized/new domain
 **Chain:** Standard user action --> Privilege gain --> Sensitive data access
 
 **Logic:**
+
 ```
 STAGE 1: Privilege change detected
   WHERE event_type IN ("group_membership_change", "role_assignment", "sudo_root")
@@ -115,6 +118,7 @@ STAGE 3: Data exfiltration signal (same host or account)
 **Chain:** Service account interactive login --> Unusual activity --> Persistence
 
 **Logic:**
+
 ```
 STAGE 1: Service account used interactively
   WHERE event_type = "authentication"

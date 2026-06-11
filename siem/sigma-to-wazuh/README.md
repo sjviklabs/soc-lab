@@ -10,12 +10,12 @@ The conversion is manual for now. Each Sigma rule maps to one or more Wazuh `<ru
 
 ## Mapping Table
 
-| Sigma Rule | Wazuh Rule ID | Coverage |
-|------------|---------------|----------|
-| `brute-force-auth.yml` | Built-in (5710-5712) | Full - Wazuh has native SSH brute force detection |
-| `privilege-escalation-sudo.yml` | 100100, 100101, 100110 | Full - sudo exec, auth failure, sudoers FIM |
-| `lateral-movement-smb.yml` | 100120 (SSH variant) | Partial - SSH lateral movement only, no SMB in lab |
-| `suspicious-powershell.yml` | N/A | Not applicable - no Windows endpoints in lab |
+| Sigma Rule                      | Wazuh Rule ID          | Coverage                                           |
+| ------------------------------- | ---------------------- | -------------------------------------------------- |
+| `brute-force-auth.yml`          | Built-in (5710-5712)   | Full - Wazuh has native SSH brute force detection  |
+| `privilege-escalation-sudo.yml` | 100100, 100101, 100110 | Full - sudo exec, auth failure, sudoers FIM        |
+| `lateral-movement-smb.yml`      | 100120 (SSH variant)   | Partial - SSH lateral movement only, no SMB in lab |
+| `suspicious-powershell.yml`     | N/A                    | Not applicable - no Windows endpoints in lab       |
 
 ## Conversion Notes
 
@@ -29,6 +29,7 @@ Sigma's `logsource` maps to Wazuh's `<if_sid>` (parent rule) and `<match>` (patt
 ## Future
 
 If the rule count grows, evaluate `sigma-cli` with the Wazuh backend for automated conversion:
+
 ```bash
 sigma convert -t wazuh -p wazuh-linux detection/sigma-rules/*.yml
 ```

@@ -5,6 +5,7 @@ The Wazuh dashboard is an OpenSearch Dashboards fork accessible at `https://wazu
 ## Default Views
 
 Out of the box, the dashboard includes:
+
 - **Security Events**: Aggregated alerts by severity, agent, rule group
 - **Integrity Monitoring**: FIM events across all agents
 - **Vulnerability Detection**: CVE scan results per agent

@@ -22,8 +22,8 @@ Monitoring in a security context isn't just uptime tracking — it's an early wa
 
 ## Contents
 
-| File | Description |
-|------|-------------|
-| `prometheus-rules/node-alerts.yml` | Host-level alerts: CPU, memory, disk, network, uptime |
+| File                                  | Description                                                   |
+| ------------------------------------- | ------------------------------------------------------------- |
+| `prometheus-rules/node-alerts.yml`    | Host-level alerts: CPU, memory, disk, network, uptime         |
 | `prometheus-rules/service-alerts.yml` | Service-level alerts: availability, error rates, SSL, backups |
-| `dashboards/soc-overview.json` | Grafana SOC overview dashboard (importable JSON) |
+| `dashboards/soc-overview.json`        | Grafana SOC overview dashboard (importable JSON)              |

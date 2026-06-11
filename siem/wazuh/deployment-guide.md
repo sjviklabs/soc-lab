@@ -38,6 +38,7 @@ bash wazuh-install.sh -a
 ```
 
 This installs:
+
 - **Wazuh Manager** (event collection, rule engine, active response) on port 1514
 - **Wazuh Indexer** (OpenSearch-based log storage) on port 9200
 - **Wazuh Dashboard** (web UI) on port 443
@@ -47,13 +48,16 @@ The installer outputs the admin password. Save it.
 ## Step 4: Post-Install Configuration
 
 ### DNS (AdGuard)
+
 Add rewrite: `wazuh.lan` -> `192.168.10.37`
 
 ### Reverse Proxy (Traefik)
+
 Add router and service for `wazuh.lan` pointing to `https://192.168.10.37:443`.
 Requires `insecureSkipVerify` since Wazuh uses self-signed TLS.
 
 ### SSH Hardening
+
 ```bash
 apt-get install -y fail2ban unattended-upgrades
 sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
@@ -61,9 +65,11 @@ systemctl restart sshd
 ```
 
 ### Monitoring (Uptime Kuma)
+
 Add HTTP monitor for `https://192.168.10.37:443` with TLS verification disabled.
 
 ### Email Alerting
+
 ```bash
 apt-get install -y msmtp msmtp-mta
 ```
@@ -71,6 +77,7 @@ apt-get install -y msmtp msmtp-mta
 Configure `/etc/msmtprc` with SMTP credentials. Wazuh uses `/usr/sbin/sendmail` which msmtp-mta provides.
 
 Enable in `/var/ossec/etc/ossec.conf`:
+
 ```xml
 <email_notification>yes</email_notification>
 <smtp_server>localhost</smtp_server>
@@ -94,5 +101,6 @@ systemctl is-active wazuh-manager
 ## Resource Usage
 
 After full deployment with 7 agents:
+
 - Manager LXC: ~1.5GB RAM, minimal CPU at idle
 - Each agent: ~50MB RAM on the endpoint

@@ -72,6 +72,7 @@ Port 2222
 ```
 
 **Trade-offs:**
+
 - Reduces automated scan noise significantly (less log clutter, fewer fail2ban triggers)
 - Adds friction for legitimate users (must specify port every time)
 - Does not stop targeted attackers — port scanning reveals the service trivially
@@ -94,14 +95,14 @@ ClientAliveInterval 300
 ClientAliveCountMax 2
 ```
 
-| Setting | Purpose |
-|---------|---------|
-| `MaxAuthTries 3` | Lock out after 3 failed attempts per connection |
-| `LoginGraceTime 30` | Close unauthenticated connections after 30 seconds |
-| `MaxSessions 3` | Limit multiplexed sessions per connection |
-| `MaxStartups 10:30:60` | Rate-limit unauthenticated connections |
-| `ClientAliveInterval 300` | Send keepalive every 5 minutes |
-| `ClientAliveCountMax 2` | Disconnect after 2 missed keepalives (10 min idle timeout) |
+| Setting                   | Purpose                                                    |
+| ------------------------- | ---------------------------------------------------------- |
+| `MaxAuthTries 3`          | Lock out after 3 failed attempts per connection            |
+| `LoginGraceTime 30`       | Close unauthenticated connections after 30 seconds         |
+| `MaxSessions 3`           | Limit multiplexed sessions per connection                  |
+| `MaxStartups 10:30:60`    | Rate-limit unauthenticated connections                     |
+| `ClientAliveInterval 300` | Send keepalive every 5 minutes                             |
+| `ClientAliveCountMax 2`   | Disconnect after 2 missed keepalives (10 min idle timeout) |
 
 ## 7. Fail2ban Integration
 

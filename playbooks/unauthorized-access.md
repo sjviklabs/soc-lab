@@ -7,11 +7,11 @@
 
 ## MITRE ATT&CK Mapping
 
-| Technique | ID | Description |
-|-----------|----|-------------|
-| Valid Accounts | T1078 | Adversary uses legitimate credentials |
-| Brute Force | T1110 | Password guessing, spraying, or credential stuffing |
-| Remote Services | T1021 | Lateral movement via RDP, SSH, SMB, WinRM |
+| Technique       | ID    | Description                                         |
+| --------------- | ----- | --------------------------------------------------- |
+| Valid Accounts  | T1078 | Adversary uses legitimate credentials               |
+| Brute Force     | T1110 | Password guessing, spraying, or credential stuffing |
+| Remote Services | T1021 | Lateral movement via RDP, SSH, SMB, WinRM           |
 
 **Related techniques:** T1098 (Account Manipulation), T1136 (Create Account), T1548 (Abuse Elevation Control Mechanism)
 
@@ -26,24 +26,26 @@
 
 ## Severity Classification
 
-| Level | Criteria |
-|-------|----------|
-| **P1 - Critical** | Admin/root account compromised, domain controller accessed, or active lateral movement |
-| **P2 - High** | Confirmed unauthorized login to any account, or privilege escalation outside change control |
-| **P3 - Medium** | Brute force in progress (no success confirmed), impossible travel on standard user |
-| **P4 - Low** | Failed login spike from single source (likely automated scan), no successful auth |
+| Level             | Criteria                                                                                    |
+| ----------------- | ------------------------------------------------------------------------------------------- |
+| **P1 - Critical** | Admin/root account compromised, domain controller accessed, or active lateral movement      |
+| **P2 - High**     | Confirmed unauthorized login to any account, or privilege escalation outside change control |
+| **P3 - Medium**   | Brute force in progress (no success confirmed), impossible travel on standard user          |
+| **P4 - Low**      | Failed login spike from single source (likely automated scan), no successful auth           |
 
 ## Investigation Steps
 
 ### 1. Account Lockdown
 
 **If unauthorized access is confirmed (not suspected):**
+
 - Disable the account immediately
 - Revoke all active sessions and tokens (OAuth, SSO, VPN)
 - Revoke API keys associated with the account
 - If service account: assess impact of disabling before acting (document the decision either way)
 
 **If suspected but unconfirmed:**
+
 - Do not disable yet -- forced lockout tips off the attacker and may cause business disruption
 - Force MFA re-enrollment or step-up authentication
 - Monitor the account in real time
@@ -59,6 +61,7 @@
 ### 3. Authentication Log Analysis
 
 **Questions to answer:**
+
 - When did the unauthorized access start? (First anomalous login, not first alert)
 - Was there a brute force or spray pattern before the successful login?
 - Did the attacker authenticate with the correct password on the first attempt? (Credential dump likely)
@@ -66,6 +69,7 @@
 - Was MFA bypassed, and if so, how? (MFA fatigue, SIM swap, token theft)
 
 **Log sources:**
+
 - Active Directory / LDAP authentication logs
 - SSO/IdP logs (Entra ID, Okta, etc.)
 - VPN gateway logs

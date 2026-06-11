@@ -7,6 +7,7 @@ Minimum security configuration for all SOC lab Linux hosts. Based on CIS Benchma
 ## 1. Package Management
 
 ### Minimal Install
+
 Install only what's needed. Every additional package is additional attack surface.
 
 ```bash
@@ -18,6 +19,7 @@ apt purge telnet rsh-client rsh-redone-client
 ```
 
 ### Automatic Security Updates
+
 Unattended upgrades ensure critical patches are applied without waiting for a maintenance window.
 
 ```bash
@@ -38,6 +40,7 @@ cat /etc/apt/apt.conf.d/20auto-upgrades
 ## 2. User Management
 
 ### Least Privilege
+
 - No shared accounts. Every operator gets a named account.
 - No direct root login. Use `sudo` with per-user grants.
 - Review accounts regularly — disable what's unused.
@@ -54,6 +57,7 @@ usermod -L -e 1 olduser
 ```
 
 ### Sudo Configuration
+
 - Use `/etc/sudoers.d/` drop-ins (not editing sudoers directly)
 - Require password for sudo (no `NOPASSWD` except for automation service accounts)
 - Log all sudo usage
@@ -65,6 +69,7 @@ Defaults:analyst log_output, log_input
 ```
 
 ### Password Policy
+
 Even with SSH key-only auth, local passwords should have sane policies for console access:
 
 ```bash
@@ -80,6 +85,7 @@ PASS_WARN_AGE   14
 ## 3. Filesystem
 
 ### Mount Options
+
 Restrict executable and setuid behavior on filesystems that don't need it:
 
 ```
@@ -89,6 +95,7 @@ tmpfs  /dev/shm  tmpfs  defaults,noexec,nosuid,nodev  0 0
 ```
 
 ### File Permissions Audit
+
 ```bash
 # Find world-writable files
 find / -xdev -type f -perm -o+w -ls
@@ -109,6 +116,7 @@ stat -c '%a %U:%G %n' /etc/passwd /etc/shadow /etc/group /etc/gshadow
 ## 4. Network
 
 ### Disable Unnecessary Services
+
 ```bash
 # List listening services
 ss -tlnp
@@ -118,6 +126,7 @@ systemctl disable --now cups avahi-daemon
 ```
 
 ### Firewall Defaults
+
 See `ansible-roles/firewall/` for automated enforcement. The baseline policy:
 
 - **Default deny** inbound
@@ -132,6 +141,7 @@ ufw enable
 ```
 
 ### Kernel Network Hardening
+
 ```bash
 # /etc/sysctl.d/90-network-hardening.conf
 
@@ -171,6 +181,7 @@ sysctl --system
 ## 5. Logging
 
 ### Retention
+
 Ensure logs survive long enough for incident investigation:
 
 ```bash
@@ -196,6 +207,7 @@ MaxRetentionSec=90day
 ```
 
 ### Log Forwarding
+
 Forward logs to a central SIEM/log collector. Without forwarding, a compromised host can destroy its own logs.
 
 ```bash

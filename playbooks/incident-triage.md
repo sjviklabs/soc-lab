@@ -21,24 +21,24 @@ Triage is technique-agnostic -- it applies to any alert. The goal is to classify
 
 Before touching any tool, answer these questions from the alert data alone:
 
-| Field | Source |
-|-------|--------|
-| Alert name and source | SIEM, EDR, email gateway, user report |
-| Affected host(s) | Hostname, IP (e.g., `soc-web-01` / `10.0.0.25`) |
-| Affected user(s) | Username, role, privilege level |
-| Timestamp and duration | First seen, last seen, ongoing? |
-| One-sentence summary | In your own words -- what happened? |
+| Field                  | Source                                          |
+| ---------------------- | ----------------------------------------------- |
+| Alert name and source  | SIEM, EDR, email gateway, user report           |
+| Affected host(s)       | Hostname, IP (e.g., `soc-web-01` / `10.0.0.25`) |
+| Affected user(s)       | Username, role, privilege level                 |
+| Timestamp and duration | First seen, last seen, ongoing?                 |
+| One-sentence summary   | In your own words -- what happened?             |
 
 Document this in the ticket immediately. Do not investigate further until context is recorded.
 
 ## 2. Severity Classification
 
-| Level | Criteria | Response Time |
-|-------|----------|---------------|
+| Level             | Criteria                                                                  | Response Time          |
+| ----------------- | ------------------------------------------------------------------------- | ---------------------- |
 | **P1 - Critical** | Active data exfiltration, ransomware execution, compromised admin account | Immediate -- all hands |
-| **P2 - High** | Confirmed compromise with limited scope, lateral movement detected | 30 minutes |
-| **P3 - Medium** | Suspicious activity requiring investigation, no confirmed impact | 4 hours |
-| **P4 - Low** | Informational, likely false positive, policy violation | Next business day |
+| **P2 - High**     | Confirmed compromise with limited scope, lateral movement detected        | 30 minutes             |
+| **P3 - Medium**   | Suspicious activity requiring investigation, no confirmed impact          | 4 hours                |
+| **P4 - Low**      | Informational, likely false positive, policy violation                    | Next business day      |
 
 If uncertain between two levels, classify at the higher severity. Downgrade after investigation, not before.
 
@@ -67,12 +67,12 @@ If uncertain between two levels, classify at the higher severity. Downgrade afte
 
 These are not automatic actions. Each requires a judgment call based on severity and confidence.
 
-| Question | If Yes |
-|----------|--------|
-| Is a host actively communicating with a known C2? | Isolate the host via EDR |
-| Is a compromised account still logged in? | Disable the account, kill active sessions |
-| Is malware spreading laterally? | Isolate affected segment, block hash at EDR |
-| Is data actively leaving the network? | Block destination at firewall, preserve traffic logs |
+| Question                                          | If Yes                                               |
+| ------------------------------------------------- | ---------------------------------------------------- |
+| Is a host actively communicating with a known C2? | Isolate the host via EDR                             |
+| Is a compromised account still logged in?         | Disable the account, kill active sessions            |
+| Is malware spreading laterally?                   | Isolate affected segment, block hash at EDR          |
+| Is data actively leaving the network?             | Block destination at firewall, preserve traffic logs |
 
 **Record every action taken** with timestamp and rationale in the ticket.
 
@@ -80,12 +80,12 @@ These are not automatic actions. Each requires a judgment call based on severity
 
 After triage, route to the appropriate specialized playbook:
 
-| Indicator | Route To |
-|-----------|----------|
-| Phishing email, malicious link/attachment | [Phishing Response](phishing-response.md) |
-| Malware execution, suspicious process, AV detection | [Malware Containment](malware-containment.md) |
-| Brute force, impossible travel, privilege escalation | [Unauthorized Access](unauthorized-access.md) |
-| None of the above / unclear | Continue investigation, escalate if no progress in 30 minutes |
+| Indicator                                            | Route To                                                      |
+| ---------------------------------------------------- | ------------------------------------------------------------- |
+| Phishing email, malicious link/attachment            | [Phishing Response](phishing-response.md)                     |
+| Malware execution, suspicious process, AV detection  | [Malware Containment](malware-containment.md)                 |
+| Brute force, impossible travel, privilege escalation | [Unauthorized Access](unauthorized-access.md)                 |
+| None of the above / unclear                          | Continue investigation, escalate if no progress in 30 minutes |
 
 ## 6. Handoff Format
 

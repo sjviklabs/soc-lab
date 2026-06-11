@@ -7,6 +7,7 @@ When to use static thresholds and when to use baseline-driven anomaly detection.
 A fixed value that fires when crossed. Simple, predictable, easy to explain.
 
 **Use thresholds when:**
+
 - The behavior has a clear "never normal" boundary (e.g., 50 failed logins in 5 minutes)
 - The baseline is stable and well-understood
 - You need deterministic, reproducible alerts (compliance, audit)
@@ -28,6 +29,7 @@ A fixed value that fires when crossed. Simple, predictable, easy to explain.
 Compare current behavior against a learned baseline. Fires on deviation, not a fixed number.
 
 **Use anomaly detection when:**
+
 - "Normal" varies by time of day, day of week, or user role
 - You are looking for unknown-unknowns (novel attack patterns)
 - The volume or pattern of activity matters more than any single event

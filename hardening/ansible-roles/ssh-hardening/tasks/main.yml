@@ -12,7 +12,7 @@
 - name: Harden sshd_config — Port
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?Port '
+    regexp: "^#?Port "
     line: "Port {{ ssh_port }}"
   notify: Restart sshd
   tags: ssh
@@ -20,7 +20,7 @@
 - name: Harden sshd_config — PermitRootLogin
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?PermitRootLogin'
+    regexp: "^#?PermitRootLogin"
     line: "PermitRootLogin {{ ssh_permit_root_login }}"
   notify: Restart sshd
   tags: ssh
@@ -28,7 +28,7 @@
 - name: Harden sshd_config — PasswordAuthentication
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?PasswordAuthentication'
+    regexp: "^#?PasswordAuthentication"
     line: "PasswordAuthentication {{ ssh_password_authentication }}"
   notify: Restart sshd
   tags: ssh
@@ -36,7 +36,7 @@
 - name: Harden sshd_config — PubkeyAuthentication
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?PubkeyAuthentication'
+    regexp: "^#?PubkeyAuthentication"
     line: "PubkeyAuthentication {{ ssh_pubkey_authentication }}"
   notify: Restart sshd
   tags: ssh
@@ -44,7 +44,7 @@
 - name: Harden sshd_config — ChallengeResponseAuthentication
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?ChallengeResponseAuthentication'
+    regexp: "^#?ChallengeResponseAuthentication"
     line: "ChallengeResponseAuthentication {{ ssh_challenge_response_authentication }}"
   notify: Restart sshd
   tags: ssh
@@ -52,7 +52,7 @@
 - name: Harden sshd_config — MaxAuthTries
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?MaxAuthTries'
+    regexp: "^#?MaxAuthTries"
     line: "MaxAuthTries {{ ssh_max_auth_tries }}"
   notify: Restart sshd
   tags: ssh
@@ -60,7 +60,7 @@
 - name: Harden sshd_config — LoginGraceTime
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?LoginGraceTime'
+    regexp: "^#?LoginGraceTime"
     line: "LoginGraceTime {{ ssh_login_grace_time }}"
   notify: Restart sshd
   tags: ssh
@@ -68,7 +68,7 @@
 - name: Harden sshd_config — ClientAliveInterval
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?ClientAliveInterval'
+    regexp: "^#?ClientAliveInterval"
     line: "ClientAliveInterval {{ ssh_client_alive_interval }}"
   notify: Restart sshd
   tags: ssh
@@ -76,7 +76,7 @@
 - name: Harden sshd_config — ClientAliveCountMax
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?ClientAliveCountMax'
+    regexp: "^#?ClientAliveCountMax"
     line: "ClientAliveCountMax {{ ssh_client_alive_count_max }}"
   notify: Restart sshd
   tags: ssh
@@ -84,7 +84,7 @@
 - name: Harden sshd_config — MaxSessions
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?MaxSessions'
+    regexp: "^#?MaxSessions"
     line: "MaxSessions {{ ssh_max_sessions }}"
   notify: Restart sshd
   tags: ssh
@@ -92,7 +92,7 @@
 - name: Harden sshd_config — MaxStartups
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?MaxStartups'
+    regexp: "^#?MaxStartups"
     line: "MaxStartups {{ ssh_max_startups }}"
   notify: Restart sshd
   tags: ssh
@@ -100,7 +100,7 @@
 - name: Harden sshd_config — X11Forwarding
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?X11Forwarding'
+    regexp: "^#?X11Forwarding"
     line: "X11Forwarding {{ ssh_x11_forwarding }}"
   notify: Restart sshd
   tags: ssh
@@ -108,7 +108,7 @@
 - name: Harden sshd_config — AllowTcpForwarding
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?AllowTcpForwarding'
+    regexp: "^#?AllowTcpForwarding"
     line: "AllowTcpForwarding {{ ssh_allow_tcp_forwarding }}"
   notify: Restart sshd
   tags: ssh
@@ -116,7 +116,7 @@
 - name: Harden sshd_config — AllowGroups
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?AllowGroups'
+    regexp: "^#?AllowGroups"
     line: "AllowGroups {{ ssh_allow_groups }}"
   when: ssh_allow_groups is defined
   notify: Restart sshd
@@ -125,7 +125,7 @@
 - name: Harden sshd_config — LogLevel
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?LogLevel'
+    regexp: "^#?LogLevel"
     line: "LogLevel {{ ssh_log_level }}"
   notify: Restart sshd
   tags: ssh
@@ -143,7 +143,7 @@
 - name: Enable SSH banner in sshd_config
   ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?Banner'
+    regexp: "^#?Banner"
     line: "Banner {{ ssh_banner_path }}"
   when: ssh_banner_enabled
   notify: Restart sshd

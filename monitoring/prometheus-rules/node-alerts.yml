@@ -8,7 +8,7 @@ groups:
           severity: warning
         annotations:
           summary: "High CPU usage on {{ $labels.instance }}"
-          description: "CPU usage has exceeded 90% for more than 5 minutes. Current value: {{ $value | printf \"%.1f\" }}%."
+          description: 'CPU usage has exceeded 90% for more than 5 minutes. Current value: {{ $value | printf "%.1f" }}%.'
 
       - alert: HighMemoryUsage
         expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 90
@@ -17,7 +17,7 @@ groups:
           severity: warning
         annotations:
           summary: "High memory usage on {{ $labels.instance }}"
-          description: "Memory usage has exceeded 90% for more than 5 minutes. Current value: {{ $value | printf \"%.1f\" }}%."
+          description: 'Memory usage has exceeded 90% for more than 5 minutes. Current value: {{ $value | printf "%.1f" }}%.'
 
       - alert: DiskSpaceLow
         expr: (node_filesystem_avail_bytes{fstype!~"tmpfs|overlay"} / node_filesystem_size_bytes) * 100 < 10
@@ -26,7 +26,7 @@ groups:
           severity: critical
         annotations:
           summary: "Low disk space on {{ $labels.instance }}"
-          description: "Filesystem {{ $labels.mountpoint }} has less than 10% free space. Current free: {{ $value | printf \"%.1f\" }}%."
+          description: 'Filesystem {{ $labels.mountpoint }} has less than 10% free space. Current free: {{ $value | printf "%.1f" }}%.'
 
       - alert: NodeDown
         expr: up == 0
@@ -53,4 +53,4 @@ groups:
           severity: warning
         annotations:
           summary: "Unexpected reboot detected on {{ $labels.instance }}"
-          description: "Node has been up for less than 5 minutes. Uptime: {{ $value | printf \"%.0f\" }} seconds. Check system logs for crash or unplanned restart."
+          description: 'Node has been up for less than 5 minutes. Uptime: {{ $value | printf "%.0f" }} seconds. Check system logs for crash or unplanned restart.'

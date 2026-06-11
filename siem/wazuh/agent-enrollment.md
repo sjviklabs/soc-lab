@@ -24,6 +24,7 @@ systemctl enable --now wazuh-agent
 ## Verify Enrollment
 
 From the manager:
+
 ```bash
 # List all agents
 /var/ossec/bin/manage_agents -l
@@ -33,6 +34,7 @@ From the manager:
 ```
 
 From the agent:
+
 ```bash
 # Check agent logs for successful connection
 tail -20 /var/ossec/logs/ossec.log
@@ -41,6 +43,7 @@ tail -20 /var/ossec/logs/ossec.log
 ## Batch Deployment
 
 For deploying across multiple LXCs, prerequisites first:
+
 ```bash
 # Some minimal LXCs don't have curl or gnupg
 apt-get install -y curl gnupg
@@ -50,9 +53,9 @@ Then run the install block above. The `WAZUH_MANAGER` environment variable sets 
 
 ## Troubleshooting
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| "Agent version must be lower or equal" | Agent newer than manager | Pin agent version: `apt-get install wazuh-agent=4.9.2-1` |
-| "Invalid server address: MANAGER_IP" | Config has placeholder | `sed -i 's/MANAGER_IP/192.168.10.37/' /var/ossec/etc/ossec.conf` |
-| "No such tag 'users'" | Config from newer version | Purge and reinstall with correct version |
-| Agent shows "Never connected" | Agent service not running | `systemctl restart wazuh-agent` |
+| Symptom                                | Cause                     | Fix                                                              |
+| -------------------------------------- | ------------------------- | ---------------------------------------------------------------- |
+| "Agent version must be lower or equal" | Agent newer than manager  | Pin agent version: `apt-get install wazuh-agent=4.9.2-1`         |
+| "Invalid server address: MANAGER_IP"   | Config has placeholder    | `sed -i 's/MANAGER_IP/192.168.10.37/' /var/ossec/etc/ossec.conf` |
+| "No such tag 'users'"                  | Config from newer version | Purge and reinstall with correct version                         |
+| Agent shows "Never connected"          | Agent service not running | `systemctl restart wazuh-agent`                                  |

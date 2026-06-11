@@ -26,12 +26,12 @@ Each playbook includes:
 
 ## Playbooks
 
-| Playbook | MITRE Techniques | Status |
-|----------|-----------------|--------|
-| [Incident Triage](incident-triage.md) | General | Active |
-| [Phishing Response](phishing-response.md) | T1566.001, T1566.002 | Active |
-| [Malware Containment](malware-containment.md) | T1059, T1204, T1071 | Active |
-| [Unauthorized Access](unauthorized-access.md) | T1078, T1110, T1021 | Active |
+| Playbook                                      | MITRE Techniques     | Status |
+| --------------------------------------------- | -------------------- | ------ |
+| [Incident Triage](incident-triage.md)         | General              | Active |
+| [Phishing Response](phishing-response.md)     | T1566.001, T1566.002 | Active |
+| [Malware Containment](malware-containment.md) | T1059, T1204, T1071  | Active |
+| [Unauthorized Access](unauthorized-access.md) | T1078, T1110, T1021  | Active |
 
 ## Usage
 

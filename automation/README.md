@@ -8,11 +8,11 @@ These scripts automate repetitive SOC and sysadmin workflows: log analysis, back
 
 ## Scripts
 
-| Script | Language | Purpose |
-|--------|----------|---------|
-| `log-parser.py` | Python 3 | Parse auth.log for failed/successful logins, summarize by IP and user |
-| `backup-validator.sh` | Bash | Verify backup recency, size, and optional checksum integrity |
-| `ioc-checker.py` | Python 3 | Triage IOCs (IPs, domains, hashes) against a local blocklist |
+| Script                | Language | Purpose                                                               |
+| --------------------- | -------- | --------------------------------------------------------------------- |
+| `log-parser.py`       | Python 3 | Parse auth.log for failed/successful logins, summarize by IP and user |
+| `backup-validator.sh` | Bash     | Verify backup recency, size, and optional checksum integrity          |
+| `ioc-checker.py`      | Python 3 | Triage IOCs (IPs, domains, hashes) against a local blocklist          |
 
 ## Usage
 

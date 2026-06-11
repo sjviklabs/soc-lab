@@ -22,7 +22,7 @@ groups:
           severity: warning
         annotations:
           summary: "High HTTP error rate on {{ $labels.instance }}"
-          description: "More than 5% of HTTP requests are returning 5xx errors on {{ $labels.job }}. Current error rate: {{ $value | printf \"%.1f\" }}%."
+          description: 'More than 5% of HTTP requests are returning 5xx errors on {{ $labels.job }}. Current error rate: {{ $value | printf "%.1f" }}%.'
 
       - alert: SSLCertExpiringSoon
         expr: (probe_ssl_earliest_cert_expiry - time()) / 86400 < 14
@@ -31,7 +31,7 @@ groups:
           severity: warning
         annotations:
           summary: "SSL certificate expiring soon on {{ $labels.instance }}"
-          description: "Certificate expires in {{ $value | printf \"%.0f\" }} days. Renew before expiry to avoid service disruption."
+          description: 'Certificate expires in {{ $value | printf "%.0f" }} days. Renew before expiry to avoid service disruption.'
 
       - alert: BackupStale
         expr: time() - backup_last_success_timestamp_seconds > 90000
