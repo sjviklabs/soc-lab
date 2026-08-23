@@ -34,7 +34,17 @@ If you're hiring and want to see what I'd run, this is it.
 
 Not affiliated with Wazuh or any vendor. Not a packaged product. Don't clone it and run on your network expecting plug-and-play. These configs assume the topology of my homelab and you'd need to adapt.
 
-The companion code for the SOC books is at [books-companion](https://github.com/sjviklabs/books-companion). Heavyweight artifacts like the full Ansible role library are at [infra-roles-public](https://github.com/sjviklabs/infra-roles-public).
+Heavyweight artifacts like the full Ansible role library are at [infra-roles-public](https://github.com/sjviklabs/infra-roles-public).
+
+## Related
+
+I write up the parts of this that generalise. The free
+[SOC Interview Cheat Sheet](https://sjviklabs.com/cheatsheet?utm_source=github&utm_medium=referral&utm_campaign=soc_interview&utm_content=repo_readme) is the
+quick-reference set, and the
+[SOC Analyst Interview Kit](https://sjviklabs.com/soc-interview-kit?utm_source=github&utm_medium=referral&utm_campaign=soc_interview&utm_content=repo_readme) is the
+longer preparation system built around the same triage workflow this lab runs.
+
+The repo is the evidence and stands on its own. The guides are optional.
 
 ## License
 
