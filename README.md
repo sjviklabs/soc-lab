@@ -18,8 +18,8 @@ Not a tutorial repo. Not a study guide. The actual tooling I run, plus the rules
 
 | Component | Details |
 |---|---|
-| SIEM | Wazuh 4.9.2 all-in-one (manager + indexer + dashboard) |
-| Endpoints | Debian 12 LXC containers on a 3-node Proxmox HA cluster |
+| SIEM | Wazuh 4.14.4 all-in-one (manager + indexer + dashboard) |
+| Endpoints | Debian 12 LXC containers on a 3-node Proxmox VE 9.1.6 HA cluster |
 | Detection | Built-in rules plus custom rules with MITRE ATT&CK mapping |
 | Alerting | Email via msmtp/Gmail for high-severity events |
 | Monitoring | Grafana + Prometheus for infra, Wazuh for security |
